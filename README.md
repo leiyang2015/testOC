@@ -1,5 +1,6 @@
 # ByteTrader iOS(SDK)
-##设计思路
+##设计思路 123456
+
 Bytetrade iOS(SDK)不保存钱包用户的私钥，需要授权的操作通过回调先由钱包签名
 
 ## 接入方法 Demo参考
