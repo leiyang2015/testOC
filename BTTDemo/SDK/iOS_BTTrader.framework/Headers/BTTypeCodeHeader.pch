@@ -1,0 +1,236 @@
+//
+//  BTTypeCodeHeader.pch
+//  BTTrader
+//
+//  Created by 杨杨 on 2018/7/6.
+//  Copyright © 2018年 yanglei. All rights reserved.
+//
+
+#ifndef BTTypeCodeHeader_pch
+#define BTTypeCodeHeader_pch
+
+
+/////!< 切换软件运行环境 0 测试环境;   1 正式环境
+
+//#define BTTENVIRONMENT   0
+//
+//
+///////!<判断环境
+//#if  BTTENVIRONMENT 
+//
+//////!<正式web3 ChainID
+//#define BTTWEBCHAINID   1
+//////!<正式web3地址
+//#define BTWEB3URL                           @"https://mainnet.infura.io/MX7Y8PLo1pLNYYSip81y"
+//////!<正式合约地址
+//#define BTCONTRACTADDRESSINPROJECT          @"0x075af08596c26a81384e1f06757f96c96bb1e896"
+////!<正式HTTPS请求链接
+//#define BTDefaultHost    @"https://p10.bytetrade.io/"
+//////!<正式WSS请求链接
+//#define BTDefaultWSS     @"wss://p10.bytetrade.io/ws/"
+//
+//#else
+//
+//////!<测试web3 ChainID
+//#define BTTWEBCHAINID   4
+//////!<测试web3地址
+//#define BTWEB3URL                           @"https://rinkeby.infura.io/MX7Y8PLo1pLNYYSip81y"
+//////!<测试合约地址
+//#define BTCONTRACTADDRESSINPROJECT          @"0x31ad8d9f61be539d93984b2835484a26af9bc5e9"
+//
+////!<测试HTTPS请求链接
+//#define BTDefaultHost    @"https://c3.bytetrade.io/"
+//////!<测试WSS请求链接
+//#define BTDefaultWSS     @"wss://api_test.bytetrade.io/ws/"
+//
+//#endif
+
+
+
+/////!<切换socket
+#define BTUSERSWITCHNODESOCKETNOTIFACTION   @"BTUSERSWITCHNODESOCKETNOTIFACTION"
+////!<合约地址
+
+//#define BTWEB3URL                           @"https://mainnet.infura.io/MX7Y8PLo1pLNYYSip81y"
+
+///test
+//#define BTWEB3URL                           @"https://rinkeby.infura.io/MX7Y8PLo1pLNYYSip81y"
+
+
+//预验证：http://p3.bytetrade.io/bittrade/gt/register2。校验：http://p3.bytetrade.io/bittrade/gt/ajax-validate2
+
+////!<用户接入GT3后需要校验
+#define BTUSERCREATECHECKAPI1    @"http://c3.bytetrade.io/bittrade/gt/register2"
+#define BTUSERCREATECHECKAPI2    @"http://c3.bytetrade.io/bittrade/gt/ajax-validate2"
+
+
+////!<BTT手续费
+#define BTTRANSATIONCONTRACTFEE             @"300000000000000"
+////!<以太坊wei
+#define BTTETHNUMBER                        1000000000000000000
+#define BTTETHNUMBERSTRING                  @"1000000000000000000"
+#define BTTWEBBALANCESTR                        @"1000000000000000000000000000000000000"
+
+/////!<充值基数
+#define BTTRECHARGEETHVALUE                 100000
+
+#define BTTRECHARGEETHVALUESTRING           @"100000"
+/////!<提现基数
+#define BTTWITHDRAWVALUE                    300000
+
+////!<交易手续费
+#define BTTTradeFeeString                   @"0.0003"
+
+////!<5倍手续费
+#define BTTTradeFifthFeeString              @"0.0015"
+
+/////!<kline显示精度
+#define BTTKlineCoinAccuracy                10
+
+#define BTSPOTPRICEACCURACY                 8
+#define BTSPOTAMOUTACCURACY                 6
+
+////!<交易手续费
+#define  BTTradeFee                         300000000000000
+
+////!<充值提币 订单状态
+#define  stateDictionary @{@"succeed":BTTraderLocalizedString(@"BTTSuccess",@"成功"),@"reject":BTTraderLocalizedString(@"BTTRefused",@"拒绝"),@"fail":BTTraderLocalizedString(@"BTTfail",@"失败"),@"wait witness to approve":BTTraderLocalizedString(@"BTTWaiting to confirm",@"待确认"),@"wait ethereum execute":BTTraderLocalizedString(@"BTTEthereum Operating...",@"等待以太执行")}
+
+/////!<充值 提币 转账 methods
+#define  methodDictionary @{@"transfer_from":BTTraderLocalizedString(@"module_transfer", @"转账"),@"deposit":BTTraderLocalizedString(@"module_deposit_text", @"充值"),@"withdraw":BTTraderLocalizedString(@"module_withdraw_title",  @"提币")}
+
+
+/// 请求状态
+typedef NS_ENUM(NSInteger, BTAPIRequestState) {
+    BTAPIRequestState_Initial = 0,       //!> 初始态
+    BTAPIRequestState_Querying,          //!> 加载态
+    BTAPIRequestState_CacheData,         //!> 读取缓存数据完成
+    BTAPIRequestState_Success,           //!> 完成成功态
+    BTAPIRequestState_Failure,           //!> 完成失败态
+    BTAPIRequestState_Parsefail,         //!> 数据解析失败
+    BTAPIRequestState_Cancel,
+    BTAPIRequestState_Error             //!> 无误态：无法完成请求
+};
+
+////!<交易类型 买 卖
+typedef NS_ENUM(NSInteger, BTTradeMode) {
+    BTTradeModeSell = 1,
+    BTTradeModeBuy = 2
+};
+
+////!<挂单类型 现价单 市价单
+typedef NS_ENUM(NSInteger, BTOrderMode) {
+    BTOrderModeLimitOrder = 1,
+    BTOrderModeMarketOrder = 2
+};
+
+////!<深度推送精度
+typedef NS_ENUM(NSInteger, BTDeepAccurateType) {
+    BTDeepAccurateTypeThree = 0,
+    BTDeepAccurateTypeFour = 1,
+    BTDeepAccurateTypeFive = 2,
+    BTDeepAccurateTypeSix = 3,
+    BTDeepAccurateTypeSeven = 4,
+    BTDeepAccurateTypeEight = 5
+    
+};
+
+////!< 订单类型 未完成 已完成 成交记录
+typedef NS_ENUM(NSInteger, BTOrderType) {
+    BTOrderTypeUncomplete = 0,
+    BTOrderTypeCompleted = 1
+};
+
+typedef NS_ENUM(NSInteger, BTTabarMode) {
+    BTTabarModeMarket = 0,
+    BTTabarModeTrader = 1,
+    BTTabarModeOrder  = 2,
+    BTTabarModeMine   = 3
+    
+};
+
+// K线价格类型
+typedef NS_ENUM(NSInteger, BTKlinePriceTag) {
+    BTKlinePriceTagOpen = 1,  ///!> 开盘价
+    BTKlinePriceTagHigh,     ///!> 最高价
+    BTKlinePriceTagLow,       ///!> 底盘价
+    BTKlinePriceTagClose,     ///!> 收盘价
+    BTKlinePriceTagVolume,    ///!> 成交量
+    BTKlinePriceTagUnknow = 0,
+};
+
+// 数值类型
+typedef NS_ENUM(NSInteger, BTValueType) {
+    BTValueTypeMax = 0,  ///!> 最大值
+    BTValueTypeMin       ///!> 最小值
+    
+};
+
+
+// K线类型周期
+typedef NS_ENUM(NSInteger, BTPeriodType) {
+    
+    BTPeriod_Unkown = -1,
+    BTPeriod_1M = 0,  //!> 1分钟
+    BTPeriod_5M = 1,      //!> 5分钟
+    BTPeriod_15M = 2,     //!> 15分钟
+    BTPeriod_30M = 3,     //!> 30分钟
+    BTPeriod_1H = 4,      //!> 1小时
+    BTPeriod_4H = 5,      //!> 4小时
+    BTPeriod_1D = 6,      //!> 1日
+    BTPeriod_5D = 7,      //!> 3日
+    BTPeriod_1W = 8,      //!> 1周
+    BTPeriod_1Mon = 9      //!> 1月
+    
+};
+
+
+// MA指标类型
+typedef NS_ENUM(NSInteger, BTKlineMAType) {
+    BTKlineMA_ = -1,      //!> 待注释
+    BTKlineMA_MA = 0,     //!> 待注释
+    BTKlineMA_EMA,        //!> 待注释
+    BTKlineMA_BOLL,     //!> 待注释
+    BTKlineMA_SAR,        //!> 待注释
+    BTKlineMA_Null = 100  //!> 用来处理关闭按钮
+};
+
+// 指标类型
+typedef NS_ENUM(NSInteger, BTKlineIndicatorType) {
+    BTKlineIndicator_ = -1,
+    BTKlineIndicator_MACD = 0,  //!> 待注释
+    BTKlineIndicator_KDJ,       //!> 待注释
+    BTKlineIndicator_BOLL,      //!> 布林指标
+    BTKlineIndicator_RSI,       //!> 强弱指标
+    BTKlineIndicator_STOCHRSI,  //!> 待注释
+    BTKlineIndicator_OBV,       //!> 待注释
+    BTKlineIndicator_SAR,       //!> 待注释
+    BTKlineIndicator_DMA,       //!> 待注释
+    BTKlineIndicator_TRIX,      //!> 待注释
+    BTKlineIndicator_VR,        //!> 待注释
+    BTKlineIndicator_BRAR,      //!> 待注释
+    BTKlineIndicator_EMV,       //!> 待注释
+    BTKlineIndicator_WR,        //!> 待注释
+    BTKlineIndicator_ROC,       //!> 待注释
+    BTKlineIndicator_MTM,       //!> 待注释
+    BTKlineIndicator_PSY,       //!> 待注释
+    BTKlineIndicator_DMI,       //!> 待注释
+    BTKlineIndicator_CCI,       //!> 待注释
+    
+    BTKlineIndicator_Null = 100  //!> 用来处理关闭按钮
+};
+
+
+
+typedef NS_ENUM(NSInteger, BTKlineBottomViewType){
+    ////!<成交
+    BTKlineBottomViewTypeDeal = 0,
+    ////!<深度
+    BTKlineBottomViewTypeDeep
+    
+};
+
+
+
+#endif /* BTTypeCodeHeader_pch */
+

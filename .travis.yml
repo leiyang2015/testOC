@@ -1,0 +1,4 @@
+osx_image: xcode10
+language: objective-c
+xcode_project: BTTDemo.xcodeproj
+script: xcodebuild -project BTTDemo.xcodeproj -scheme "BTTDemo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'

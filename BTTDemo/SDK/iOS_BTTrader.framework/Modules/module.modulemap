@@ -1,0 +1,4 @@
+framework module iOS_BTTrader {
+    header "iOS_BTTrader-Swift.h"
+    requires objc
+}

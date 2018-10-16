@@ -1,0 +1,6 @@
+module Pods_BTTDemo {
+  umbrella header "Pods-BTTDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
