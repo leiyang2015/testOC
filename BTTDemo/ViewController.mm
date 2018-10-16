@@ -28,6 +28,9 @@
     [super viewDidLoad];
     
     [self configueButton];
+    NSLog(@"safsgdhfjgh");
+    NSLog(@"safsgdhfjgh");
+
 }
 
 
